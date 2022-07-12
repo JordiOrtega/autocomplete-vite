@@ -12,7 +12,6 @@
         placeholder="Type here..."
         class="p-3 mb-0.5 w-full border border-gray-300 rounded"
       />
-
       <ul
         v-if="townsR.length || regionsR.length"
         class="
@@ -29,9 +28,6 @@
           text-left
         "
       >
-        <!-- <li class="px-1 pt-1 pb-2 font-bold border-b border-gray-200">
-          Showing results
-        </li> -->
         <li class="px-1 pt-2 pb-2 text-slate-400 text-sm tracking-wider">
           Towns
         </li>
@@ -65,8 +61,8 @@
 </template>
 
 <script>
-import Spinner from './Spinner';
-// inspiration from https://stevencotterill.com/articles/how-to-build-an-autocomplete-field-with-vue-3
+import Spinner from './Spinner.vue';
+
 export default {
   name: 'Autocomplete',
   components: { Spinner },
