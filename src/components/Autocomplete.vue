@@ -65,10 +65,11 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
-
+import Spinner from './Spinner';
 // inspiration from https://stevencotterill.com/articles/how-to-build-an-autocomplete-field-with-vue-3
 export default {
+  name: 'Autocomplete',
+  components: { Spinner },
   data() {
     return {
       searchTerm: '',
