@@ -1,24 +1,29 @@
-name: Bump version
+name: Semantic Release
+
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'package.json'
-      - 'CHANGELOG.md'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-      with:
-        token: ${{ secrets.RELEASE_TOKEN_ACTION }}
-    - name: Bump version and push tag
-      uses: TriPSs/conventional-changelog-action@latest
-      with:
-        github-token: ${{ secrets.RELEASE_TOKEN_ACTION }}
-        git-message: 'chore(release): {version}'
-        preset: 'angular'
-        tag-prefix: ''
-        output-file: 'CHANGELOG.md'
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build
+      - name: Semantic Release 📦
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN_ACTION }}
