@@ -17,5 +17,6 @@
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.5",
     "vite": "^2.9.13"
-  }
+  },
+  "release": { "branches": [ "main" ] },
 }
